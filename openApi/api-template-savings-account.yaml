@@ -55,7 +55,7 @@ paths:
   /savings-accounts/retrieve:
     get:
       tags:
-      - Savings Account
+      - CR - Savings Account Facility
       summary: ''
       description: |
         [INGRESAR_AQUI_DESCRIPCION_FUNCIONAL_DETALLADA_ENDPOINT]
