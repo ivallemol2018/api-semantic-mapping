@@ -88,6 +88,44 @@ paths:
           $ref: '#/components/responses/503ServiceUnavailableResponse'
         '504':
           $ref: '#/components/responses/504GatewayTimeoutResponse'
+  /savings-accounts/{savingsAccountId}/retrieve:
+    get:
+      tags:
+      - CR - Savings Account Facility
+      summary: ''
+      description: |
+        [INGRESAR_AQUI_DESCRIPCION_FUNCIONAL_DETALLADA_ENDPOINT]
+      operationId: retrieveSavingsAccount
+      parameters:
+      - $ref: '#/components/parameters/AuthorizationHeader'
+      - $ref: '#/components/parameters/RequestIdHeader'
+      - $ref: '#/components/parameters/RequestDataHeader'
+      - $ref: '#/components/parameters/AppCodeHeader'
+      - $ref: '#/components/parameters/CallerNameHeader'
+      - $ref: '#/components/parameters/OcpApimSubscriptionKeyHeader'
+      - $ref: '#/components/parameters/SavingsAccountIdPath'
+      responses:
+        '200':
+          $ref: '#/components/responses/200RetrieveSavingsAccountResponse'
+        '400':
+          $ref: '#/components/responses/400BadRequestResponse'
+        '401':
+          $ref: '#/components/responses/401UnauthorizedResponse'
+        '404':
+          $ref: '#/components/responses/404NotFoundResponse'
+        '429':
+          $ref: '#/components/responses/429TooManyRequestsResponse'
+        '500':
+          $ref: '#/components/responses/500InternalServerErrorResponse'
+        '501':
+          $ref: '#/components/responses/501NotImplementedResponse'
+        '502':
+          $ref: '#/components/responses/502BadGatewayResponse'
+        '503':
+          $ref: '#/components/responses/503ServiceUnavailableResponse'
+        '504':
+          $ref: '#/components/responses/504GatewayTimeoutResponse'
+
 components:
   schemas:
     SavingsAccountInstrucion:
@@ -224,6 +262,7 @@ components:
       maxLength: 8192
       pattern: ^Bearer\s.+$
       example: Bearer eyJBggffdgdfdf
+    SavingsAccountId: {}
   parameters:
     AuthorizationHeader:
       name: Authorization
@@ -261,6 +300,12 @@ components:
       required: true
       schema:
         $ref: '#/components/schemas/OcpApimSubscriptionKey'
+    SavingsAccountIdPath:
+      name: savingsAccountId
+      in: path
+      required: true
+      schema:
+        $ref: '#/components/schemas/SavingsAccountId'
   requestBodies:
     InitiateSavingsAccountsRequest:
       required: true
